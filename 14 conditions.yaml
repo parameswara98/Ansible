@@ -1,0 +1,17 @@
+- name: conditions to control the playbook 
+  hosts: local
+  connection: local
+  tasks:
+   - name: print the nginx if it is rehat 
+     ansible.builtin.dnf :
+       name: nginx
+       state: present
+     when: ansible_os_family == "RedHat"
+
+  
+  tasks:
+   - name: print the nginx if it is debian 
+     ansible.builtin.dnf :
+       name: nginx
+       state: present
+     when: ansible_os_family == "Debian"   
